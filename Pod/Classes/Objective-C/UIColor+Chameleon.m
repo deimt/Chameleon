@@ -469,8 +469,11 @@
         return (luminance > 0.6f) ? hsba(0, 0, 15, alpha) : hsba(192, 2, 95, alpha);
     }
 }
-
-+ (UIColor *)colorWithGradientStyle:(UIGradientStyle)gradientStyle withFrame:(CGRect)frame andColors:(NSArray<UIColor *> * _Nonnull)colors; {
++ (UIColor *)colorWithGradientStyle:(UIGradientStyle)gradientStyle withFrame:(CGRect)frame andColors:(NSArray<UIColor *> * _Nonnull)colors {
+    
+    return [UIColor colorWithGradientStyle:gradientStyle withFrame:frame andColors:colors rotation:0.0];
+}
++ (UIColor *)colorWithGradientStyle:(UIGradientStyle)gradientStyle withFrame:(CGRect)frame andColors:(NSArray<UIColor *> * _Nonnull)colors rotation:(float)angle {
     
     //Create our background gradient layer
     CAGradientLayer *backgroundGradientLayer = [CAGradientLayer layer];
@@ -491,8 +494,18 @@
             backgroundGradientLayer.colors = cgColors;
             
             //Specify the direction our gradient will take
-            [backgroundGradientLayer setStartPoint:CGPointMake(0.0, 0.5)];
-            [backgroundGradientLayer setEndPoint:CGPointMake(1.0, 0.5)];
+            if (angle == 0.0) {
+                [backgroundGradientLayer setStartPoint:CGPointMake(0.0, 0.5)];
+                [backgroundGradientLayer setEndPoint:CGPointMake(1.0, 0.5)];
+            } else {
+                float a = pow(sinf((2*M_PI*((angle+0.75)/2))),2);
+                float b = pow(sinf((2*M_PI*((angle+0.0)/2))),2);
+                float c = pow(sinf((2*M_PI*((angle+0.25)/2))),2);
+                float d = pow(sinf((2*M_PI*((angle+0.5)/2))),2);
+                [backgroundGradientLayer setStartPoint:CGPointMake(a, b)];
+                [backgroundGradientLayer setEndPoint:CGPointMake(c, d)];
+            }
+            
             
             //Convert our CALayer to a UIImage object
             UIGraphicsBeginImageContextWithOptions(backgroundGradientLayer.bounds.size,NO, [UIScreen mainScreen].scale);

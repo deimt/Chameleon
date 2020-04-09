@@ -953,6 +953,20 @@ typedef NS_ENUM (NSInteger, UIShadeStyle) {
  */
 + (UIColor *)colorWithGradientStyle:(UIGradientStyle)gradientStyle withFrame:(CGRect)frame andColors:(NSArray<UIColor *> * _Nonnull)colors;
 
+/**
+*  Creates and returns a gradient as a color object with an alpha value of 1.0
+*
+*  @param gradientStyle Specifies the style and direction of the gradual blend between colors.
+*  @param frame The frame rectangle, which describes the view’s location and size in its superview’s coordinate system.
+*  @param colors An array of color objects used to create a gradient.
+*  @param  angel rotation value for gradient 
+*
+*  @return A @c UIColor object using colorWithPattern.
+*
+*  @since 2.0
+*/
+
++ (UIColor *)colorWithGradientStyle:(UIGradientStyle)gradientStyle withFrame:(CGRect)frame andColors:(NSArray<UIColor *> * _Nonnull)colors rotation:(float)angle;
 #pragma mark - Colors from Hex Strings
 
 /**
