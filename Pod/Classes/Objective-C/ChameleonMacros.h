@@ -107,6 +107,8 @@
 
 #define GradientColor(gradientStyle, frame, colors) [UIColor colorWithGradientStyle:gradientStyle withFrame:frame andColors:colors]
 
+#define GradientColorWithAngle(gradientStyle, frame, colors, angle) [UIColor colorWithGradientStyle:gradientStyle withFrame:frame andColors:colors rotation:(float)angle]
+
 #define HexColor(hexString) [UIColor colorWithHexString:hexString]
 #define HexColorWithAlpha(hexString, alpha) [UIColor colorWithHexString:hexString withAlpha:alpha]
 
