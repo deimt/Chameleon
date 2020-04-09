@@ -78,6 +78,10 @@ public func GradientColor(_ gradientStyle: UIGradientStyle, frame: CGRect, color
     return UIColor(gradientStyle: gradientStyle, withFrame: frame, andColors: colors)
 }
 
+public func GradientColor(_ gradientStyle: UIGradientStyle, frame: CGRect, colors: [UIColor], rotation: Float) -> UIColor {
+    return UIColor(gradientStyle: gradientStyle, withFrame: frame, andColors: colors, rotation: rotation)
+}
+
 public func HexColor(_ hexString: String, _ alpha: CGFloat = 1.0) -> UIColor? {
     return UIColor(hexString: hexString, withAlpha: alpha)
 }
